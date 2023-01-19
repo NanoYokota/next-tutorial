@@ -1,11 +1,10 @@
-import Layout from '../../components/layout';
-import { getAllPostIds, getPostData } from '../../lib/posts';
+import Layout from '../../components/templates/layout';
+import { getAllPostIds, getPostData } from '../../api/posts';
 import Head from 'next/head';
-import Date from '../../components/date.js';
-import utilStyles from '../../styles/utils.module.css';
+import Date from '../../components/atoms/date.js';
+import utilStyles from '../../assets/styles/utils.module.css';
 
-export async function getStaticPaths()
-{
+export async function getStaticPaths() {
   const paths = getAllPostIds();
   return {
     paths,
@@ -13,8 +12,7 @@ export async function getStaticPaths()
   }
 }
 
-export async function getStaticProps( { params } )
-{
+export async function getStaticProps( { params } ) {
   const postData = await getPostData( params.id );
   return {
     props: {
